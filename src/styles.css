@@ -1,0 +1,281 @@
+@import "tailwindcss";
+
+@theme {
+  --color-canvas: #f5f5f5;
+  --color-ink: #282828;
+  --color-ink-strong: #000000;
+  --color-muted: #6b7280;
+  --color-line: #111111;
+  --color-field: #4e4e4e;
+  --color-ghost: #9f9f9f;
+  --color-photo: #c4c4c4;
+  --font-sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --text-hero: 4.3125rem;
+  --text-section: 2.8125rem;
+  --text-lead: 1.875rem;
+  --text-nav: 1.55rem;
+  --text-quote: 1.875rem;
+  --radius-card: 5px;
+  --spacing-nav: 6.875rem;
+  --spacing-gutter: 4.875rem;
+  --spacing-plus: 3.6875rem;
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  html,
+  body,
+  #app {
+    min-height: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    background: var(--color-canvas);
+    color: var(--color-ink);
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer components {
+  .circle-btn {
+    background: transparent;
+    transition:
+      background-color 220ms var(--ease-out-soft),
+      color 220ms var(--ease-out-soft),
+      border-color 220ms var(--ease-out-soft),
+      transform 150ms ease-out;
+  }
+
+  .circle-btn:hover,
+  .circle-btn:focus-visible {
+    background: var(--color-ink-strong);
+    color: var(--color-canvas);
+    outline: none;
+  }
+
+  .circle-btn:active {
+    transform: scale(0.96);
+  }
+
+  .plus-spin {
+    display: inline-block;
+    transition: transform 300ms var(--ease-out-soft);
+  }
+
+  .circle-btn:hover .plus-spin,
+  .circle-btn:focus-visible .plus-spin {
+    transform: rotate(90deg);
+  }
+
+  .fill-btn {
+    background: transparent;
+    transition:
+      background-color 220ms var(--ease-out-soft),
+      color 220ms var(--ease-out-soft),
+      border-color 220ms var(--ease-out-soft),
+      transform 150ms ease-out;
+  }
+
+  .fill-btn:hover,
+  .fill-btn:focus-visible {
+    background: var(--color-ink-strong);
+    color: var(--color-canvas);
+    border-color: var(--color-ink-strong);
+    outline: none;
+  }
+
+  .fill-btn:active {
+    transform: scale(0.96);
+  }
+
+  .nav-link {
+    position: relative;
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0.15em;
+    width: 100%;
+    height: 1px;
+    background: var(--color-ink-strong);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 220ms var(--ease-out-soft);
+  }
+
+  .nav-link:hover::after,
+  .nav-link:focus-visible::after,
+  .nav-link.is-active::after {
+    transform: scaleX(1);
+  }
+
+  .text-link {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0 1px;
+    transition: background-size 220ms var(--ease-out-soft), opacity 200ms ease;
+  }
+
+  .text-link:hover,
+  .text-link:focus-visible {
+    background-size: 100% 1px;
+    outline: none;
+  }
+
+  .arrow-nudge {
+    display: inline-block;
+    transition: transform 220ms var(--ease-out-soft);
+  }
+
+  .group\/link:hover .arrow-nudge,
+  .group\/link:focus-visible .arrow-nudge {
+    transform: translate(4px, -3px);
+  }
+
+  .group\/see:hover .arrow-nudge,
+  .group\/see:focus-visible .arrow-nudge {
+    transform: translateX(6px);
+  }
+
+  .field-input {
+    border: 2px solid var(--color-field);
+    background: transparent;
+    color: var(--color-ink);
+    transition:
+      border-color 200ms var(--ease-out-soft),
+      background-color 200ms var(--ease-out-soft);
+  }
+
+  .field-input::placeholder {
+    color: var(--color-ghost);
+  }
+
+  .field-input:hover {
+    border-color: color-mix(in srgb, var(--color-ink-strong) 55%, var(--color-field));
+  }
+
+  .field-input:focus,
+  .field-input:focus-visible {
+    border-color: var(--color-ink-strong);
+    outline: none;
+    background: color-mix(in srgb, var(--color-canvas) 88%, white);
+  }
+
+  .logo-mark {
+    transition:
+      background-color 220ms var(--ease-out-soft),
+      color 220ms var(--ease-out-soft),
+      transform 150ms ease-out;
+  }
+
+  .logo-mark:hover,
+  .logo-mark:focus-visible {
+    background: var(--color-ink-strong);
+    color: var(--color-canvas);
+    outline: none;
+  }
+
+  .logo-mark:active {
+    transform: scale(0.96);
+  }
+
+  .icon-hit {
+    display: inline-flex;
+    transition: transform 200ms var(--ease-out-soft), opacity 200ms ease;
+  }
+
+  .icon-hit:hover,
+  .icon-hit:focus-visible {
+    transform: translateY(-2px);
+    opacity: 0.7;
+    outline: none;
+  }
+
+  .photo-zoom img {
+    transition: transform 700ms var(--ease-out-soft);
+  }
+
+  .photo-zoom:hover img {
+    transform: scale(1.06);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes quote-in {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes accordion-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track,
+  .quote-in,
+  .photo-zoom img {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .circle-btn:active,
+  .fill-btn:active,
+  .logo-mark:active {
+    transform: none;
+  }
+}
+
+.marquee-track {
+  animation: marquee 28s linear infinite;
+}
+
+.marquee-pause:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.quote-in {
+  animation: quote-in 420ms var(--ease-out-soft) both;
+}
