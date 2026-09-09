@@ -11,7 +11,7 @@ export const site = {
   hero: {
     before: "I'm Preetam, an AI engineer & systems builder based in Hyderabad. ",
     available: "Available",
-    after: " for internships & full-time.",
+    after: "Open for internships & full-time.",
   },
   incluhubLive: "https://inclu-pilot-three.vercel.app",
   aboutPhotos: ["https://cdn.jsdelivr.net/gh/pritamexe2k4-cmyk/preetam-portfolio@main/public/media/about-a.png", "https://cdn.jsdelivr.net/gh/pritamexe2k4-cmyk/preetam-portfolio@main/public/media/about-b.png"] as const,
