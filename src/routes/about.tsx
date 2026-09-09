@@ -12,10 +12,10 @@ function AboutPage() {
   return (
     <Shell>
       <main className={`${pageX} pb-24 pt-4`}>
-        <SectionTitle>About Me</SectionTitle>
+        <SectionTitle kicker="Bio">About Me</SectionTitle>
         <div className="mb-16 grid gap-6 sm:grid-cols-2">
           {site.aboutPhotos.map((src) => (
-            <div key={src} className="photo-zoom overflow-hidden rounded-card bg-photo">
+            <div key={src} className="photo-zoom overflow-hidden rounded-card border border-line bg-photo">
               <img src={src} alt="" className="aspect-[4/3] w-full object-cover" />
             </div>
           ))}
@@ -40,15 +40,15 @@ function AboutPage() {
             <p className="mb-4 font-sans text-lead text-ink-strong">What I actually ship:</p>
             <Accordion items={aboutAccordion} />
             <dl className="mt-12 space-y-8 font-sans text-lead text-ink">
-              <div className="border-b border-line pb-6">
-                <dt className="text-ink-strong">Looking for</dt>
+              <div className="surface-card p-6">
+                <dt className="font-mono text-xs uppercase tracking-[0.18em] text-lime">Looking for</dt>
                 <dd className="mt-3 text-lg leading-relaxed">
                   Internships from ₹20k/month or full-time from 4 LPA in GenAI / RAG / agentic / applied AI /
                   backend. Hyderabad or remote-friendly India.
                 </dd>
               </div>
-              <div className="border-b border-line pb-6">
-                <dt className="text-ink-strong">Links</dt>
+              <div className="surface-card p-6">
+                <dt className="font-mono text-xs uppercase tracking-[0.18em] text-cyan">Links</dt>
                 <dd className="mt-3 flex flex-col gap-2 text-lg">
                   <a href={site.github} target="_blank" rel="noreferrer" className="text-link w-fit">
                     GitHub

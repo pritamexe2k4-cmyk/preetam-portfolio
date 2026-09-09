@@ -9,6 +9,12 @@ import { projects } from "@/data/site";
 
 export const Route = createFileRoute("/work/$slug")({ component: WorkPage });
 
+const toneClass = {
+  cyan: "tone-cyan",
+  magenta: "tone-magenta",
+  amber: "tone-amber",
+} as const;
+
 function WorkPage() {
   const { slug } = Route.useParams();
   const index = projects.findIndex((p) => p.slug === slug);
@@ -21,8 +27,8 @@ function WorkPage() {
 
   return (
     <Shell>
-      <article className={`${pageX} pb-24 pt-4`}>
-        <p className="mb-6 font-sans text-sm text-muted">
+      <article className={`${pageX} pb-24 pt-4 ${toneClass[project.tone]}`}>
+        <p className="mb-6 font-mono text-sm text-muted">
           <Link to="/" hash="work" className="text-link">
             Work
           </Link>{" "}
@@ -30,26 +36,38 @@ function WorkPage() {
         </p>
         <div className="grid items-start gap-10 lg:grid-cols-2">
           <div>
-            <h1 className="font-sans text-[2.6rem] leading-[0.95] text-ink-strong md:text-hero">{project.title}</h1>
-            <p className="mt-6 font-sans text-lg text-muted">{project.stack}</p>
-            <div className="mt-8 flex flex-wrap gap-6 font-sans text-lg">
+            <h1 className="font-display text-[2.6rem] font-bold leading-[0.95] text-ink-strong md:text-hero">
+              {project.title}
+            </h1>
+            <p className="mt-6 font-mono text-sm text-[color:var(--tone)]">{project.stack}</p>
+            <div className="mt-8 flex flex-wrap gap-4 font-sans text-lg">
               {project.live ? (
-                <a href={project.live} target="_blank" rel="noreferrer" className="group/see inline-flex items-center gap-2">
+                <a
+                  href={project.live}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="fill-btn group/see inline-flex items-center gap-2 rounded-pill px-5 py-2"
+                >
                   Live
                   <ArrowSee className="arrow-nudge" />
                 </a>
               ) : null}
-              <a href={project.repo} target="_blank" rel="noreferrer" className="group/see inline-flex items-center gap-2">
+              <a
+                href={project.repo}
+                target="_blank"
+                rel="noreferrer"
+                className="ghost-btn group/see inline-flex items-center gap-2 rounded-pill px-5 py-2"
+              >
                 GitHub
                 <ArrowSee className="arrow-nudge" />
               </a>
             </div>
           </div>
           <div className="flex flex-col gap-6">
-            <div className="photo-zoom overflow-hidden rounded-card bg-photo">
+            <div className="project-frame photo-zoom overflow-hidden rounded-card">
               <img src={project.image} alt="" className="aspect-[16/10] w-full object-cover" />
             </div>
-            <div className="photo-zoom overflow-hidden rounded-card bg-photo">
+            <div className="project-frame photo-zoom overflow-hidden rounded-card">
               <img src={project.image2} alt="" className="aspect-[16/10] w-full object-cover" />
             </div>
           </div>
