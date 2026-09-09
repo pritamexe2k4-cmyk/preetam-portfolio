@@ -7,6 +7,7 @@ export const site = {
   github: "https://github.com/pritamexe2k4-cmyk",
   linkedin: "https://www.linkedin.com/in/preetam-naik2k4",
   resume: "https://github.com/pritamexe2k4-cmyk/resume",
+  live: "https://preetam-portfolio-phi.vercel.app",
   hero: {
     before: "I'm Preetam, an AI engineer & systems builder based in Hyderabad. ",
     available: "Available",
@@ -23,6 +24,7 @@ export const projects = [
     title: "Student Dashboard",
     image: "/media/p1.png",
     image2: "/media/work-1.png",
+    tone: "cyan" as const,
     blurb:
       "Role-based education ops — Admin, Educator, Student. Supabase Auth and RLS, QR check-in, admin broadcast.",
     live: "https://incluhub-dashboard-rho.vercel.app",
@@ -41,6 +43,7 @@ export const projects = [
     title: "Production RAG",
     image: "/media/p2.png",
     image2: "/media/work-2.png",
+    tone: "magenta" as const,
     blurb:
       "Grounded document Q&A. Chunk, retrieve, generate with citations. LangGraph routes retrieve vs refuse.",
     live: null,
@@ -59,6 +62,7 @@ export const projects = [
     title: "Agentic Ops",
     image: "/media/p3.png",
     image2: "/media/work-3.png",
+    tone: "amber" as const,
     blurb:
       "Multi-agent backend: ingest an event, call tools or APIs, return structured output on one POST.",
     live: null,
@@ -74,32 +78,32 @@ export const projects = [
 ] as const;
 
 export const skillsTicker = [
-  "Python",
-  "TypeScript",
-  "SQL",
-  "FastAPI",
-  "LangGraph",
-  "LangChain",
-  "RAG",
-  "Next.js",
-  "React Native",
-  "Supabase",
-  "Firebase",
-  "Docker",
-  "GitHub Actions",
-];
+  { label: "Python", tone: "cyan" },
+  { label: "TypeScript", tone: "violet" },
+  { label: "SQL", tone: "amber" },
+  { label: "FastAPI", tone: "lime" },
+  { label: "LangGraph", tone: "magenta" },
+  { label: "LangChain", tone: "cyan" },
+  { label: "RAG", tone: "violet" },
+  { label: "Next.js", tone: "amber" },
+  { label: "React Native", tone: "lime" },
+  { label: "Supabase", tone: "magenta" },
+  { label: "Firebase", tone: "cyan" },
+  { label: "Docker", tone: "violet" },
+  { label: "GitHub Actions", tone: "amber" },
+] as const;
 
 export const aboutAccordion = [
   {
-    t: "①   RAG / agents",
+    t: "RAG / agents",
     d: "LangGraph routes retrieve vs refuse. Citations when the files support it. One POST for multi-agent ops.",
   },
   {
-    t: "②   FastAPI backends",
+    t: "FastAPI backends",
     d: "Typed services: ingest, tools, structured output. Python, Pydantic, REST. Built to be read in a hiring screen.",
   },
   {
-    t: "③   Product systems",
+    t: "Product systems",
     d: "Next.js, React Native, Supabase, Firebase, GitHub Actions. RBAC, CRM, live users — not just notebooks.",
   },
 ] as const;
@@ -109,16 +113,19 @@ export const notes = [
     title: "Brum — voice over a knowledge base",
     date: "09.2026",
     href: "https://github.com/pritamexe2k4-cmyk/brum-voice-assistant",
+    tone: "cyan" as const,
   },
   {
     title: "Grounded RAG that refuses",
     date: "08.2026",
     href: "https://github.com/pritamexe2k4-cmyk/production-rag",
+    tone: "magenta" as const,
   },
   {
     title: "Role-based ops dashboard",
     date: "2026",
     href: "https://incluhub-dashboard-rho.vercel.app",
+    tone: "amber" as const,
   },
 ];
 
