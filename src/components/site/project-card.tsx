@@ -4,6 +4,12 @@ import type { projects } from "@/data/site";
 
 type Project = (typeof projects)[number];
 
+const toneClass = {
+  cyan: "tone-cyan",
+  magenta: "tone-magenta",
+  amber: "tone-amber",
+} as const;
+
 export function ProjectCard({ project }: { project: Project }) {
   const stageRef = useRef<HTMLDivElement>(null);
   const circleRef = useRef<HTMLSpanElement>(null);
@@ -62,13 +68,14 @@ export function ProjectCard({ project }: { project: Project }) {
   }, []);
 
   return (
-    <Link to="/work/$slug" params={{ slug: project.slug }} className="group block">
-      <p className="mb-3 font-sans text-lead text-ink-strong transition-opacity duration-200 group-hover:opacity-70">
-        {project.n} {project.title}
+    <Link to="/work/$slug" params={{ slug: project.slug }} className={`group block ${toneClass[project.tone]}`}>
+      <p className="mb-3 flex items-baseline gap-2 font-sans text-lead text-ink-strong">
+        <span className="font-mono text-sm text-[color:var(--tone)]">{project.n}</span>
+        {project.title}
       </p>
       <div
         ref={stageRef}
-        className="relative overflow-hidden rounded-card bg-photo max-md:cursor-pointer md:cursor-none"
+        className="project-frame relative overflow-hidden rounded-card max-md:cursor-pointer md:cursor-none"
       >
         <img
           src={project.image}
@@ -78,7 +85,7 @@ export function ProjectCard({ project }: { project: Project }) {
         <span
           ref={circleRef}
           aria-hidden
-          className="pointer-events-none absolute top-1/2 left-1/2 z-10 hidden size-[4.5rem] items-center justify-center rounded-full bg-canvas text-[11px] font-medium tracking-[0.16em] text-ink-strong uppercase opacity-0 md:flex"
+          className="pointer-events-none absolute top-1/2 left-1/2 z-10 hidden size-[4.5rem] items-center justify-center rounded-full bg-canvas font-mono text-[11px] font-medium tracking-[0.16em] text-ink-strong uppercase opacity-0 md:flex"
           style={{ transform: "translate(-50%, -50%) scale(0.28)" }}
         >
           View

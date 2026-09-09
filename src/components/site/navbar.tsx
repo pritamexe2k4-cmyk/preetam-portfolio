@@ -17,12 +17,12 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="relative sticky top-0 z-40 bg-canvas/90 backdrop-blur-[2px]">
+    <header className="glass-nav sticky top-0 z-40">
       <nav className={cn(pageX, "flex h-16 items-center justify-between md:h-nav")}>
         <Logo />
         <button
           type="button"
-          className="circle-btn inline-flex size-11 items-center justify-center rounded-full border border-ink-strong text-sm text-ink-strong hover:bg-ink-strong hover:text-canvas md:hidden"
+          className="circle-btn inline-flex size-11 items-center justify-center rounded-full text-sm md:hidden"
           aria-expanded={open}
           aria-controls="site-nav"
           onClick={() => setOpen((v) => !v)}
@@ -32,7 +32,7 @@ export function Navbar() {
         <ul
           id="site-nav"
           className={cn(
-            "absolute left-0 right-0 top-16 z-50 flex flex-col gap-1 border-b border-line bg-canvas px-6 py-4 md:static md:z-auto md:flex md:flex-row md:items-center md:gap-8 md:border-0 md:bg-transparent md:px-0 md:py-0",
+            "absolute left-0 right-0 top-16 z-50 flex-col gap-1 border-b border-line bg-canvas/95 px-6 py-4 md:static md:z-auto md:flex md:flex-row md:items-center md:gap-8 md:border-0 md:bg-transparent md:px-0 md:py-0",
             open ? "flex" : "hidden md:flex",
           )}
         >
@@ -42,7 +42,10 @@ export function Navbar() {
               ((item.to === "/about" && pathname === "/about") ||
                 (item.to === "/contact" && pathname === "/contact") ||
                 (item.to === "/" && (pathname === "/" || pathname.startsWith("/work"))));
-            const cls = cn("nav-link block py-2 font-sans text-lg text-ink-strong md:py-0 md:text-nav", active && "is-active");
+            const cls = cn(
+              "nav-link block py-2 font-sans text-lg md:py-0 md:text-nav",
+              active && "is-active",
+            );
             if ("href" in item) {
               return (
                 <li key={item.label}>
