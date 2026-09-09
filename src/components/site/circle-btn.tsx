@@ -2,7 +2,7 @@ import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "reac
 import { cn } from "@/lib/cn";
 
 export const circleClass =
-  "circle-btn group inline-flex size-plus shrink-0 items-center justify-center rounded-full border border-ink-strong text-lead text-ink-strong hover:bg-ink-strong hover:text-canvas";
+  "circle-btn group inline-flex size-plus shrink-0 items-center justify-center rounded-full text-lead";
 
 export function CircleButton({
   className,

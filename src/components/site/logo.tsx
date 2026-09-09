@@ -8,7 +8,7 @@ export function Logo({ className = "" }: { className?: string }) {
       to="/"
       aria-label={`${site.name} home`}
       className={cn(
-        "logo-mark inline-flex h-9 w-[4.25rem] items-center justify-center rounded-full border-2 border-ink-strong text-sm tracking-tight text-ink-strong hover:bg-ink-strong hover:text-canvas",
+        "logo-mark inline-flex h-10 w-[4.4rem] items-center justify-center rounded-full font-display text-sm font-bold tracking-tight",
         className,
       )}
     >

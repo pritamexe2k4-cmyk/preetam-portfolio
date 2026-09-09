@@ -1,10 +1,22 @@
-export function SectionTitle({ children }: { children: string }) {
+import { cn } from "@/lib/cn";
+
+export function SectionTitle({
+  children,
+  kicker,
+  className,
+}: {
+  children: string;
+  kicker?: string;
+  className?: string;
+}) {
   return (
-    <div className="mb-10">
-      <h2 className="font-sans text-[2rem] leading-none text-ink-strong text-balance md:text-section">
+    <div className={cn("mb-10", className)}>
+      {kicker ? (
+        <p className="mb-3 font-mono text-xs uppercase tracking-[0.22em] text-cyan">{kicker}</p>
+      ) : null}
+      <h2 className="font-display text-section font-semibold leading-none text-ink-strong text-balance">
         {children}
       </h2>
-      <div className="mt-7 h-px w-full bg-line" />
     </div>
   );
 }

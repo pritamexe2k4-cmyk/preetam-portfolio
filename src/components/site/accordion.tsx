@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
+const tones = ["tone-cyan", "tone-magenta", "tone-amber"] as const;
+
 export function Accordion({
   items,
   defaultOpen = 0,
@@ -11,20 +13,23 @@ export function Accordion({
   const [open, setOpen] = useState(defaultOpen);
 
   return (
-    <div>
+    <div className="flex flex-col gap-2">
       {items.map((item, i) => {
         const on = open === i;
         return (
-          <div key={item.t} className="border-b border-line">
+          <div key={item.t} className={`surface-card overflow-hidden ${tones[i % tones.length]}`}>
             <button
               type="button"
-              className="flex w-full items-center justify-between py-4 text-left font-sans text-lead text-ink-strong transition-opacity duration-200 hover:opacity-70"
+              className="flex w-full items-center justify-between px-5 py-4 text-left font-sans text-lead text-ink-strong transition-colors duration-200 hover:bg-elevated"
               onClick={() => setOpen(on ? -1 : i)}
               aria-expanded={on}
             >
-              {item.t}
+              <span className="flex items-center gap-3">
+                <span className="font-mono text-sm text-[color:var(--tone)]">0{i + 1}</span>
+                {item.t}
+              </span>
               <ChevronDown
-                className={`size-3 shrink-0 transition-transform duration-300 ease-out ${on ? "rotate-180" : ""}`}
+                className={`size-4 shrink-0 text-[color:var(--tone)] transition-transform duration-300 ease-out ${on ? "rotate-180" : ""}`}
               />
             </button>
             <div
@@ -32,7 +37,7 @@ export function Accordion({
               style={{ gridTemplateRows: on ? "1fr" : "0fr" }}
             >
               <div className="overflow-hidden">
-                <p className="pb-5 pl-8 pr-4 text-base leading-relaxed text-ink">{item.d}</p>
+                <p className="px-5 pb-5 pl-14 text-base leading-relaxed text-ink">{item.d}</p>
               </div>
             </div>
           </div>
