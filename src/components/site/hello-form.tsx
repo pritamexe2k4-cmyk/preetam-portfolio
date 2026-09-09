@@ -12,7 +12,7 @@ export function HelloCopy() {
         my best to reply within 24 hrs!
       </p>
       <p>
-        If contact forms aren’t your thing… send me an email at{" "}
+        If contact forms aren’t your thing… write{" "}
         <a href={`mailto:${site.email}`} className="text-link">
           {site.email}
         </a>
@@ -48,7 +48,7 @@ export function HelloForm() {
   }
 
   return (
-    <form className="flex flex-col gap-6" onSubmit={onSubmit}>
+    <form className="surface-card flex flex-col gap-6 p-6 md:p-8" onSubmit={onSubmit}>
       <fieldset className="contents">
         <legend className="mb-2 text-lg text-ink">Name *</legend>
         <div className="grid gap-4 sm:grid-cols-2">
@@ -64,7 +64,7 @@ export function HelloForm() {
               name="inquiry"
               required
               defaultValue=""
-              className={`${field} w-full appearance-none bg-canvas pr-10`}
+              className={`${field} w-full appearance-none bg-surface pr-10`}
             >
               <option value="" disabled>
                 Select One
@@ -75,7 +75,7 @@ export function HelloForm() {
                 </option>
               ))}
             </select>
-            <ChevronSelect className="pointer-events-none absolute top-1/2 right-3 size-3 -translate-y-1/2 text-ink-strong" />
+            <ChevronSelect className="pointer-events-none absolute top-1/2 right-3 size-3 -translate-y-1/2 text-cyan" />
           </span>
         </label>
         <label className="flex flex-col gap-2 text-lg text-ink">
@@ -94,10 +94,7 @@ export function HelloForm() {
         Message *
         <textarea name="message" required placeholder="Hello..." className={`${field} min-h-36`} />
       </label>
-      <button
-        type="submit"
-        className="fill-btn self-start border-2 border-field px-8 py-2 text-lg text-ink-strong hover:border-ink-strong hover:bg-ink-strong hover:text-canvas"
-      >
+      <button type="submit" className="fill-btn self-start rounded-pill px-8 py-2.5 text-lg font-medium">
         Send
       </button>
     </form>

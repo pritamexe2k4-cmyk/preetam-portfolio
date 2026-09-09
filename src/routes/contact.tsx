@@ -10,7 +10,7 @@ function ContactPage() {
   return (
     <Shell>
       <main className={`${pageX} pb-24 pt-4`}>
-        <SectionTitle>Say Hello</SectionTitle>
+        <SectionTitle kicker="Contact">Say Hello</SectionTitle>
         <div className="grid gap-16 lg:grid-cols-2">
           <HelloCopy />
           <HelloForm />
